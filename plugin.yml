@@ -1,0 +1,10 @@
+name: AlmostFlatLandsReloaded
+version: 1.0
+main: me.F_o_F_1092.AlmostFlatLandsReloaded.Main
+author: F_o_F_1092
+load: startup
+commands:
+  almostflatlandsreloaded:
+    description: none
+    usage: /AlmostFlatLandsReloaded
+    aliases: [aflr]
