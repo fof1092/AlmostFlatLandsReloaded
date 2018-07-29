@@ -15,11 +15,12 @@ public class VersionManager {
 		v1_10_R1,
 		v1_11_R1,
 		v1_12_R1,
+		v1_13_R1,
 		UNKNOWN
 	}
 	
 	public enum BungeeVersion {
-		v1_7, v1_8, v1_9, v1_0, v1_10, v1_11, v1_12, UNKNOWN
+		v1_7, v1_8, v1_9, v1_0, v1_10, v1_11, v1_12, v1_13, UNKNOWN
 	}
 	
 	public enum ServerType {
@@ -56,6 +57,8 @@ public class VersionManager {
 				VersionManager.bungeeVersion = BungeeVersion.v1_11;
 			} else if (version.startsWith("1.12")) {
 				VersionManager.bungeeVersion = BungeeVersion.v1_12;
+			} else if (version.startsWith("1.13")) {
+				VersionManager.bungeeVersion = BungeeVersion.v1_13;
 			} else {
 				VersionManager.bungeeVersion = BungeeVersion.UNKNOWN;
 			}

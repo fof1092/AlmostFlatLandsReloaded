@@ -19,10 +19,10 @@ import me.F_o_F_1092.AlmostFlatLandsReloaded.PluginManager.Command;
 import me.F_o_F_1092.AlmostFlatLandsReloaded.PluginManager.CommandListener;
 import me.F_o_F_1092.AlmostFlatLandsReloaded.PluginManager.ServerLog;
 import me.F_o_F_1092.AlmostFlatLandsReloaded.PluginManager.VersionManager;
+import me.F_o_F_1092.AlmostFlatLandsReloaded.PluginManager.VersionManager.BukkitVersion;
 import me.F_o_F_1092.AlmostFlatLandsReloaded.PluginManager.VersionManager.ServerType;
 import me.F_o_F_1092.AlmostFlatLandsReloaded.PluginManager.Spigot.HelpPageListener;
 import me.F_o_F_1092.AlmostFlatLandsReloaded.PluginManager.Spigot.UpdateListener;
-import me.F_o_F_1092.AlmostFlatLandsReloaded.WorldGenerator.WorldGenerator;
 
 public class Main extends JavaPlugin {
 
@@ -37,9 +37,9 @@ public class Main extends JavaPlugin {
 		System.out.println("[AlmostFlatLandsReloaded] a Plugin by F_o_F_1092");
 
 		plugin = this;
-
-		ServerLog.setPluginTag("§2[§a&lAlmostFlatLandsReloaded§2]§a");
-		UpdateListener.initializeUpdateListener(1.0, "1.0", 55405);
+		
+		ServerLog.setPluginTag("§2[§a§lAlmostFlatLandsReloaded§2]§a");
+		UpdateListener.initializeUpdateListener(1.0, "1.0 v1_13_R1", 55405);
 		UpdateListener.checkForUpdate();
 		
 		
@@ -53,7 +53,7 @@ public class Main extends JavaPlugin {
 			try {
 				ymlFileConfig.set("Version", UpdateListener.getUpdateDoubleVersion());
 				ymlFileConfig.set("GameVersion.SetOwn", false);
-				ymlFileConfig.set("GameVersion.Version", "v1_12_R1");
+				ymlFileConfig.set("GameVersion.Version", "v1_13_R1");
 				ymlFileConfig.set("ColoredConsoleText", true);
 				ymlFileConfig.set("ShowUpdateMessage", true);
 				
@@ -165,6 +165,13 @@ public class Main extends JavaPlugin {
 		CommandListener.addCommand(new Command("/AFLR info", null, ChatColor.translateAlternateColorCodes('&', ymlFileMessage.getString("HelpText.2"))));
 		CommandListener.addCommand(new Command("/AFLR reload", "AlmostFlatLandsReloaded.Reload", ChatColor.translateAlternateColorCodes('&', ymlFileMessage.getString("HelpText.3"))));
 		
+		
+		if (VersionManager.getBukkitVersion() != BukkitVersion.v1_13_R1) {
+			ServerLog.err("");
+			ServerLog.err("This version of AlmostFlatLandsReloaded only supports MC 1.13 Servers.");
+			ServerLog.err("You can find other versions here https://www.spigotmc.org/resources/55405/history");
+			ServerLog.err("");
+		}
 	}
 
 	@Override
@@ -175,7 +182,11 @@ public class Main extends JavaPlugin {
 	
 	@Override
 	public ChunkGenerator getDefaultWorldGenerator(String worldName, String id){
-		return new WorldGenerator();
+		if (VersionManager.getBukkitVersion() == BukkitVersion.v1_13_R1) {
+			return new me.F_o_F_1092.AlmostFlatLandsReloaded.WorldGenerator.WorldGenerator();
+		}
+		
+		return null;
 	}
 	
 }
