@@ -1,12 +1,12 @@
 package me.F_o_F_1092.AlmostFlatLandsReloaded.WorldGenerator;
 
 import org.bukkit.World;
-import org.bukkit.craftbukkit.v1_13_R1.CraftChunk;
+import org.bukkit.craftbukkit.v1_13_R2.CraftChunk;
 
-import net.minecraft.server.v1_13_R1.Block;
-import net.minecraft.server.v1_13_R1.BlockPosition;
-import net.minecraft.server.v1_13_R1.Chunk;
-import net.minecraft.server.v1_13_R1.IBlockData;
+import net.minecraft.server.v1_13_R2.Block;
+import net.minecraft.server.v1_13_R2.BlockPosition;
+import net.minecraft.server.v1_13_R2.Chunk;
+import net.minecraft.server.v1_13_R2.IBlockData;
 
 public class Util {
 	
