@@ -31,10 +31,10 @@ public class CommnandAlmostFlatLandsReloaded implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender cs, Command cmd, String label, String[] args) {
-		if (VersionManager.getBukkitVersion() != BukkitVersion.v1_13_R1) {
-			ServerLog.err("This version of AlmostFlatLandsReloaded only supports MC 1.13 Servers.");
+		if (VersionManager.getBukkitVersion() != BukkitVersion.v1_16_R1) {
+			ServerLog.err("This version of AlmostFlatLandsReloaded only supports MC 1.16 Servers.");
 			ServerLog.err("You can find other versions here https://www.spigotmc.org/resources/55405/history");
-			cs.sendMessage("This version of AlmostFlatLandsReloaded only supports MC 1.13 Servers.");
+			cs.sendMessage("This version of AlmostFlatLandsReloaded only supports MC 1.16 Servers.");
 			cs.sendMessage("You can find other versions here https://www.spigotmc.org/resources/55405/history");
 		} else {
 			if (args.length == 0) {
@@ -82,7 +82,7 @@ public class CommnandAlmostFlatLandsReloaded implements CommandExecutor {
 					replaceCommand = replaceCommand.replace("[COMMAND]", CommandListener.getCommand("/AFLR info").getColoredCommand());
 					cs.sendMessage(Options.msg.get("[AlmostFlatLandsReloaded]") + replaceCommand); 
 				} else {
-					cs.sendMessage("§a§m-----------§2 [§aAlmostFlatLandsReloaded§2] §a§m-----------");
+					cs.sendMessage("Â§aÂ§m-----------Â§2 [Â§aAlmostFlatLandsReloadedÂ§2] Â§aÂ§m-----------");
 					cs.sendMessage("");
 					
 					if (cs instanceof Player) {
@@ -90,9 +90,9 @@ public class CommnandAlmostFlatLandsReloaded implements CommandExecutor {
 						
 						List<JSONMessage> jsonFoFMessages = new ArrayList<JSONMessage>();
 						
-						JSONMessage FoFText = new JSONMessage("§aBy: ");
-						JSONMessage FoFLink = new JSONMessage("§2F_o_F_1092");
-						FoFLink.setHoverText("§a[§2Open my Website§a]");
+						JSONMessage FoFText = new JSONMessage("Â§aBy: ");
+						JSONMessage FoFLink = new JSONMessage("Â§2F_o_F_1092");
+						FoFLink.setHoverText("Â§a[Â§2Open my WebsiteÂ§a]");
 						FoFLink.setOpenURL("https://fof1092.de");
 						
 						jsonFoFMessages.add(FoFText);
@@ -104,9 +104,9 @@ public class CommnandAlmostFlatLandsReloaded implements CommandExecutor {
 						
 						List<JSONMessage> jsonTwitterMessages = new ArrayList<JSONMessage>();
 						
-						JSONMessage twitterText = new JSONMessage("§aTwitter: ");
-						JSONMessage twitterLink = new JSONMessage("§2@F_o_F_1092");
-						twitterLink.setHoverText("§a[§2Open Twitter§a]");
+						JSONMessage twitterText = new JSONMessage("Â§aTwitter: ");
+						JSONMessage twitterLink = new JSONMessage("Â§2@F_o_F_1092");
+						twitterLink.setHoverText("Â§a[Â§2Open TwitterÂ§a]");
 						twitterLink.setOpenURL("https://twitter.com/F_o_F_1092");
 						
 						jsonTwitterMessages.add(twitterText);
@@ -115,13 +115,13 @@ public class CommnandAlmostFlatLandsReloaded implements CommandExecutor {
 						JSONMessageListener.send(p, JSONMessageListener.putJSONMessagesTogether(jsonTwitterMessages));
 					
 						cs.sendMessage("");
-						cs.sendMessage("§aVersion: §2" + UpdateListener.getUpdateStringVersion());
+						cs.sendMessage("Â§aVersion: Â§2" + UpdateListener.getUpdateStringVersion());
 						
 						List<JSONMessage> jsonOptionsPageMessages = new ArrayList<JSONMessage>();
 						
-						JSONMessage OptionsWebsiteText = new JSONMessage("§aHelpPagePlus: ");
-						JSONMessage OptionsWebsiteLink = new JSONMessage("§2https://fof1092.de/Plugins/AFLR");
-						OptionsWebsiteLink.setHoverText("§a[§2Open the Options Page§a]");
+						JSONMessage OptionsWebsiteText = new JSONMessage("Â§aHelpPagePlus: ");
+						JSONMessage OptionsWebsiteLink = new JSONMessage("Â§2https://fof1092.de/Plugins/AFLR");
+						OptionsWebsiteLink.setHoverText("Â§a[Â§2Open the Options PageÂ§a]");
 						OptionsWebsiteLink.setOpenURL("https://fof1092.de/Plugins/AFLR");
 						
 						jsonOptionsPageMessages.add(OptionsWebsiteText);
@@ -130,16 +130,16 @@ public class CommnandAlmostFlatLandsReloaded implements CommandExecutor {
 						JSONMessageListener.send(p, JSONMessageListener.putJSONMessagesTogether(jsonOptionsPageMessages));
 					
 					} else {
-						cs.sendMessage("§aBy: §2F_o_F_1092");
+						cs.sendMessage("Â§aBy: Â§2F_o_F_1092");
 						cs.sendMessage("");
-						cs.sendMessage("§aTwitter: §2@F_o_F_1092");
+						cs.sendMessage("Â§aTwitter: Â§2@F_o_F_1092");
 						cs.sendMessage("");
-						cs.sendMessage("§aVersion: §2" + UpdateListener.getUpdateStringVersion());
-						cs.sendMessage("§aHelpPagePlus: §2https://fof1092.de/Plugins/AFLR");
+						cs.sendMessage("Â§aVersion: Â§2" + UpdateListener.getUpdateStringVersion());
+						cs.sendMessage("Â§aHelpPagePlus: Â§2https://fof1092.de/Plugins/AFLR");
 					}
 					
 					cs.sendMessage("");
-					cs.sendMessage("§a§m-----------§2 [§aAlmostFlatLandsReloaded§2] §a§m-----------");
+					cs.sendMessage("Â§aÂ§m-----------Â§2 [Â§aAlmostFlatLandsReloadedÂ§2] Â§aÂ§m-----------");
 				}
 			} else if (args[0].equalsIgnoreCase("reload")) {
 				if (args.length != 1) {
@@ -191,10 +191,10 @@ public class CommnandAlmostFlatLandsReloaded implements CommandExecutor {
 						UpdateListener.showUpdateMessage = ymlFileConfig.getBoolean("ShowUpdateMessage");
 						
 						if (!ymlFileConfig.getBoolean("GameVersion.SetOwn")) {
-							ServerLog.log("ServerType:§2 " + VersionManager.getSetverTypeString() + "§a, Version:§2 " + VersionManager.getBukkitVersion());
+							ServerLog.log("ServerType:Â§2 " + VersionManager.getSetverTypeString() + "Â§a, Version:Â§2 " + VersionManager.getBukkitVersion());
 						} else {
 							VersionManager.setVersionManager(ymlFileConfig.getString("GameVersion.Version"), ServerType.BUKKIT, true);
-							ServerLog.log("ServerType:§2 " + VersionManager.getSetverTypeString() + "§a, Version:§2 " + VersionManager.getBukkitVersion() + "§a | §2(Self configurated)");
+							ServerLog.log("ServerType:Â§2 " + VersionManager.getSetverTypeString() + "Â§a, Version:Â§2 " + VersionManager.getBukkitVersion() + "Â§a | Â§2(Self configurated)");
 						}
 						
 						
@@ -204,7 +204,7 @@ public class CommnandAlmostFlatLandsReloaded implements CommandExecutor {
 							Options.worldBiome = Biome.valueOf(ymlFileConfig.getString("World.Biome"));
 						} catch (Exception e) {
 							Options.worldBiome = Biome.PLAINS;
-							ServerLog.err("§2Invalid Biome name: " + ymlFileConfig.get("World.Biome") + " . [" + e.getMessage() +"]");
+							ServerLog.err("Â§2Invalid Biome name: " + ymlFileConfig.get("World.Biome") + " . [" + e.getMessage() +"]");
 						}
 						
 						Options.worldGrassChance = ymlFileConfig.getInt("World.GrassChance");
@@ -215,7 +215,7 @@ public class CommnandAlmostFlatLandsReloaded implements CommandExecutor {
 							try {
 								Options.worldTreeTypes.add(TreeType.valueOf(treeTypeString));
 							} catch (Exception e) {
-								ServerLog.err("§2Invalid TreeType name: " + treeTypeString + " . [" + e.getMessage() +"]");
+								ServerLog.err("Â§2Invalid TreeType name: " + treeTypeString + " . [" + e.getMessage() +"]");
 							}
 						}
 						

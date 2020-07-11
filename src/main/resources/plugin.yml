@@ -1,6 +1,6 @@
 name: AlmostFlatLandsReloaded
 version: 1.0
-api-version: 1.13
+api-version: 1.16
 main: me.F_o_F_1092.AlmostFlatLandsReloaded.Main
 author: F_o_F_1092
 load: startup

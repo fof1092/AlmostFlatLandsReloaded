@@ -38,8 +38,8 @@ public class Main extends JavaPlugin {
 
 		plugin = this;
 		
-		ServerLog.setPluginTag("§2[§a§lAlmostFlatLandsReloaded§2]§a");
-		UpdateListener.initializeUpdateListener(1.0, "1.0 v1_13_R2", 55405);
+		ServerLog.setPluginTag("Â§2[Â§aÂ§lAlmostFlatLandsReloadedÂ§2]Â§a");
+		UpdateListener.initializeUpdateListener(1.0, "1.0 v1_16_R1", 55405);
 		UpdateListener.checkForUpdate();
 		
 		
@@ -53,7 +53,7 @@ public class Main extends JavaPlugin {
 			try {
 				ymlFileConfig.set("Version", UpdateListener.getUpdateDoubleVersion());
 				ymlFileConfig.set("GameVersion.SetOwn", false);
-				ymlFileConfig.set("GameVersion.Version", "v1_13_R2");
+				ymlFileConfig.set("GameVersion.Version", "v1_16_R1");
 				ymlFileConfig.set("ColoredConsoleText", true);
 				ymlFileConfig.set("ShowUpdateMessage", true);
 				
@@ -79,10 +79,10 @@ public class Main extends JavaPlugin {
 		UpdateListener.showUpdateMessage = ymlFileConfig.getBoolean("ShowUpdateMessage");
 		
 		if (!ymlFileConfig.getBoolean("GameVersion.SetOwn")) {
-			ServerLog.log("ServerType:§2 " + VersionManager.getSetverTypeString() + "§a, Version:§2 " + VersionManager.getBukkitVersion());
+			ServerLog.log("ServerType:Â§2 " + VersionManager.getSetverTypeString() + "Â§a, Version:Â§2 " + VersionManager.getBukkitVersion());
 		} else {
 			VersionManager.setVersionManager(ymlFileConfig.getString("GameVersion.Version"), ServerType.BUKKIT, true);
-			ServerLog.log("ServerType:§2 " + VersionManager.getSetverTypeString() + "§a, Version:§2 " + VersionManager.getBukkitVersion() + "§a | §2(Self configurated)");
+			ServerLog.log("ServerType:Â§2 " + VersionManager.getSetverTypeString() + "Â§a, Version:Â§2 " + VersionManager.getBukkitVersion() + "Â§a | Â§2(Self configurated)");
 		}
 		
 		
@@ -92,7 +92,7 @@ public class Main extends JavaPlugin {
 			Options.worldBiome = Biome.valueOf(ymlFileConfig.getString("World.Biome"));
 		} catch (Exception e) {
 			Options.worldBiome = Biome.PLAINS;
-			ServerLog.err("§2Invalid Biome name: " + ymlFileConfig.get("World.Biome") + " . [" + e.getMessage() +"]");
+			ServerLog.err("Â§2Invalid Biome name: " + ymlFileConfig.get("World.Biome") + " . [" + e.getMessage() +"]");
 		}
 		
 		Options.worldGrassChance = ymlFileConfig.getInt("World.GrassChance");
@@ -103,7 +103,7 @@ public class Main extends JavaPlugin {
 			try {
 				Options.worldTreeTypes.add(TreeType.valueOf(treeTypeString));
 			} catch (Exception e) {
-				ServerLog.err("§2Invalid TreeType name: " + treeTypeString + " . [" + e.getMessage() +"]");
+				ServerLog.err("Â§2Invalid TreeType name: " + treeTypeString + " . [" + e.getMessage() +"]");
 			}
 		}
 		
@@ -166,9 +166,9 @@ public class Main extends JavaPlugin {
 		CommandListener.addCommand(new Command("/AFLR reload", "AlmostFlatLandsReloaded.Reload", ChatColor.translateAlternateColorCodes('&', ymlFileMessage.getString("HelpText.3"))));
 		
 		
-		if (VersionManager.getBukkitVersion() != BukkitVersion.v1_13_R2) {
+		if (VersionManager.getBukkitVersion() != BukkitVersion.v1_16_R1) {
 			ServerLog.err("");
-			ServerLog.err("This version of AlmostFlatLandsReloaded only supports MC 1.13.1 Servers.");
+			ServerLog.err("This version of AlmostFlatLandsReloaded only supports MC 1.16.1 Servers.");
 			ServerLog.err("You can find other versions here https://www.spigotmc.org/resources/55405/history");
 			ServerLog.err("");
 		}
@@ -182,7 +182,7 @@ public class Main extends JavaPlugin {
 	
 	@Override
 	public ChunkGenerator getDefaultWorldGenerator(String worldName, String id){
-		if (VersionManager.getBukkitVersion() == BukkitVersion.v1_13_R2) {
+		if (VersionManager.getBukkitVersion() == BukkitVersion.v1_16_R1) {
 			return new me.F_o_F_1092.AlmostFlatLandsReloaded.WorldGenerator.WorldGenerator();
 		}
 		

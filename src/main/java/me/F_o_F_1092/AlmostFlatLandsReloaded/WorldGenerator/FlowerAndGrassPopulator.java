@@ -10,7 +10,7 @@ import org.bukkit.block.Block;
 import org.bukkit.generator.BlockPopulator;
 
 import me.F_o_F_1092.AlmostFlatLandsReloaded.Options;
-import net.minecraft.server.v1_13_R2.Blocks;
+import net.minecraft.server.v1_16_R1.Blocks;
 
 public class FlowerAndGrassPopulator extends BlockPopulator {
 
