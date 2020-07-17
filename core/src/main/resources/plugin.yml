@@ -1,0 +1,11 @@
+name: ${project.parent.name}
+version: ${project.parent.version}
+api-version: 1.13
+main: de.fof1092.almostflatlandsreloaded.Main
+author: F_o_F_1092
+load: startup
+commands:
+  almostflatlandsreloaded:
+    description: none
+    usage: /AlmostFlatLandsReloaded
+    aliases: [aflr]
