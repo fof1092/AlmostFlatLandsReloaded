@@ -31,10 +31,20 @@ public class CommnandAlmostFlatLandsReloaded implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender cs, Command cmd, String label, String[] args) {
-		if (VersionManager.getBukkitVersion() != BukkitVersion.v1_15_R1 && VersionManager.getBukkitVersion() != BukkitVersion.v1_16_R1) {
-			ServerLog.err("This version of AlmostFlatLandsReloaded only supports MC 1.15 & 1.16 Servers.");
+		if (VersionManager.getBukkitVersion() != BukkitVersion.v1_8_R3 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_9_R1 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_9_R2 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_10_R1 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_11_R1 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_12_R1 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_13_R1 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_13_R2 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_14_R1 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_15_R1 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_16_R1) {
+			ServerLog.err("This version of AlmostFlatLandsReloaded only supports MC 1.8.8 - 1.16 Servers.");
 			ServerLog.err("You can find other versions here https://www.spigotmc.org/resources/55405/history");
-			cs.sendMessage("This version of AlmostFlatLandsReloaded only supports MC 1.15 & 1.16 Servers.");
+			cs.sendMessage("This version of AlmostFlatLandsReloaded only supports MC 1.8.8 - 1.16 Servers.");
 			cs.sendMessage("You can find other versions here https://www.spigotmc.org/resources/55405/history");
 		} else {
 			if (args.length == 0) {

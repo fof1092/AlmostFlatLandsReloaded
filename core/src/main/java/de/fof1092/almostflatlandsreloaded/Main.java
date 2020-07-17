@@ -42,7 +42,7 @@ public class Main extends JavaPlugin {
 		plugin = this;
 		
 		ServerLog.setPluginTag("§2[§a§lAlmostFlatLandsReloaded§2]§a");
-		UpdateListener.initializeUpdateListener(1.2, "1.2.0", 55405);
+		UpdateListener.initializeUpdateListener(1.21, "1.2.1", 55405);
 		UpdateListener.checkForUpdate();
 		
 		
@@ -209,11 +209,20 @@ public class Main extends JavaPlugin {
 		CommandListener.addCommand(new Command("/AFLR help (Page)", null, ChatColor.translateAlternateColorCodes('&', ymlFileMessage.getString("HelpText.1"))));
 		CommandListener.addCommand(new Command("/AFLR info", null, ChatColor.translateAlternateColorCodes('&', ymlFileMessage.getString("HelpText.2"))));
 		CommandListener.addCommand(new Command("/AFLR reload", "AlmostFlatLandsReloaded.Reload", ChatColor.translateAlternateColorCodes('&', ymlFileMessage.getString("HelpText.3"))));
-		
-		
-		if (VersionManager.getBukkitVersion() != BukkitVersion.v1_15_R1 && VersionManager.getBukkitVersion() != BukkitVersion.v1_16_R1) {
+
+		if (VersionManager.getBukkitVersion() != BukkitVersion.v1_8_R3 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_9_R1 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_9_R2 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_10_R1 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_11_R1 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_12_R1 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_13_R1 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_13_R2 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_14_R1 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_15_R1 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_16_R1) {
 			ServerLog.err("");
-			ServerLog.err("This version of AlmostFlatLandsReloaded only supports MC 1.15 & 1.16 Servers.");
+			ServerLog.err("This version of AlmostFlatLandsReloaded only supports MC 1.8.8 - 1.16 Servers.");
 			ServerLog.err("You can find other versions here https://www.spigotmc.org/resources/55405/history");
 			ServerLog.err("");
 
