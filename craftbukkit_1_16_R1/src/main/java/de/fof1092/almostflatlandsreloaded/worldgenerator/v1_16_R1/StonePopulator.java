@@ -5,9 +5,30 @@ import org.bukkit.generator.ChunkGenerator.ChunkData;
 
 import java.util.Random;
 
-public class StonePopulator {
+/**
+ * StonePopulator is responsible for creating the stone layer of the AFLR world.
+ */
+final class StonePopulator {
 
-	public static ChunkData populate(int x, int y, int z, ChunkData cd, Random random) {
+	/**
+	 * StonePopulator has a private constructor, because it is a utility class.
+	 */
+	private StonePopulator() {
+		throw new IllegalStateException("Utility class");
+	}
+
+	/**
+	 * Creates the stone layer of the AFLR world.
+	 *
+	 * @param x the x position within the chunk
+	 * @param y the y position within the chunk
+	 * @param z the z position within the chunk
+	 * @param cd the current ChunkData of the chunk
+	 * @param random the randomizer of the world
+	 *
+	 * @return the new ChunkData of the chunk
+	 */
+	static ChunkData populate(int x, int y, int z, ChunkData cd, Random random) {
 		for (int newY = 1; newY < y; newY++) {
 			
 			int randomBlockType = random.nextInt(Options.worldUndergroundMaterials.size());

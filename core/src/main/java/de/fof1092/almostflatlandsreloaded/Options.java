@@ -3,30 +3,88 @@ package de.fof1092.almostflatlandsreloaded;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.bukkit.Material;
 import org.bukkit.TreeType;
 import org.bukkit.block.Biome;
 
-public class Options {
-	
-	public static HashMap<String, String> msg = new HashMap<String, String>();
-	
-	public static int worldHight;
+/**
+ * Options is managing the adjustable parameters of the plugin.
+ */
+public final class Options {
+
+	/**
+	 * Manages the messages of the plugin.
+	 */
+	public static Map<String, String> msg = new HashMap<>();
+
+	/**
+	 * Determines at what altitude the AFLR world should be located.
+	 */
+	public static int worldHeight;
+
+	/**
+	 * Determines which biome the AFLR world consists of.
+	 */
 	public static Biome worldBiome;
+
+	/**
+	 * Determines how much grass is generated in the AFLR world.
+	 */
 	public static int worldGrassChance;
+
+	/**
+	 * Determines how many flowers are generated in the AFLR world.
+	 */
 	public static int worldFlowerChance;
+
+	/**
+	 * Determines how many trees are generated in the AFLR world
+	 */
 	public static int worldTreeChance;
-	public static List<TreeType> worldTreeTypes = new ArrayList<TreeType>();
+
+	/**
+	 * Determines which tree species are generated in the AFLR world.
+	 */
+	public static List<TreeType> worldTreeTypes = new ArrayList<>();
+
+	/**
+	 * Determines at what altitude the water in the AFLR world begins.
+	 */
 	public static int worldWaterHeight;
+
+	/**
+	 * Determines if ores are generated in the AFLR world.
+	 */
 	public static boolean worldGenerateOres;
-	public static List<Material> worldUndergroundMaterials = new ArrayList<Material>();
-	public static List<Material> worldPreGroundMaterials = new ArrayList<Material>();
-	public static List<Material> worldGroundMaterials = new ArrayList<Material>();
-	public static List<Material> worldWaterGroundMaterials = new ArrayList<Material>();
-	
-	public static List<String> pages = new ArrayList<String>();
-	public static int commandsPerPage;
-	public static int pagesPerPage;
-	public static int maxTextLength;
+
+	/**
+	 * Determines which material is used in the underground in the AFLR world.
+	 */
+	public static List<Material> worldUndergroundMaterials = new ArrayList<>();
+
+	/**
+	 * Determines which material is under the Ground Material in the AFLR world.
+	 */
+	public static List<Material> worldPreGroundMaterials = new ArrayList<>();
+
+	/**
+	 * Determines which material is on the top level in the AFLR world.
+	 */
+	public static List<Material> worldGroundMaterials = new ArrayList<>();
+
+    /**
+	 * Determines which material is under the water in the AFLR world.
+	 */
+	public static List<Material> worldWaterGroundMaterials = new ArrayList<>();
+
+
+	/**
+	 * Options has a private constructor, because it is a utility class.
+	 */
+	private Options() {
+		throw new IllegalStateException("Utility class");
+	}
+
 }

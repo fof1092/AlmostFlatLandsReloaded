@@ -10,10 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * WorldGenerator manages the AFLR world generator.
+ */
 public class WorldGenerator extends ChunkGenerator {
-	
-	public static List<BlockPopulator> populators;
-	
+
+	/**
+	 * Generates the Chunk Data of the AFLR world.
+	 */
 	@Override
 	public ChunkData generateChunkData(World world, Random random, int chunkX, int chunkZ, BiomeGrid biomeGrid) {
 		
@@ -28,7 +32,7 @@ public class WorldGenerator extends ChunkGenerator {
 				int realX = x + chunkX * 16;
 				int realZ = z + chunkZ * 16;
 		        
-		        double normalHight = (wgen.noise(realX, realZ, 0.5D, 0.5D) / 0.75) + Options.worldHight;
+		        double normalHight = (wgen.noise(realX, realZ, 0.5D, 0.5D) / 0.75) + Options.worldHeight;
 		        
 		        
 		        cd = StonePopulator.populate(x, (int) normalHight, z, cd, random);
@@ -37,23 +41,26 @@ public class WorldGenerator extends ChunkGenerator {
 		        	cd = OrePopulator.populate(x, (int) normalHight, z, cd, random);
 		        }
 		        
-				cd = BeadrockPopulator.populate(x, (int) normalHight, z, cd, random);
+				cd = BeadrockPopulator.populate(x, z, cd, random);
 				cd = GroundPopulator.populate(x, (int) normalHight, z, cd, random);
-		        
+
 				biomeGrid.setBiome(x, z, Options.worldBiome);
 			}
 		}
-		
+
 		return cd;
 	}
-	
+
+	/**
+	 * Creates a list of all BlockPopulators.
+	 */
 	@Override
 	public List<BlockPopulator> getDefaultPopulators(World world) {
-	    List<BlockPopulator> populators_main = new ArrayList<BlockPopulator>();
-	    populators_main.add(new FlowerAndGrassPopulator());
-	    populators_main.add(new TreePopulator());
+	    List<BlockPopulator> populators = new ArrayList<>();
+	    populators.add(new FlowerAndGrassPopulator());
+	    populators.add(new TreePopulator());
 	    
-	    return populators_main;
+	    return populators;
 	}
 	
 }

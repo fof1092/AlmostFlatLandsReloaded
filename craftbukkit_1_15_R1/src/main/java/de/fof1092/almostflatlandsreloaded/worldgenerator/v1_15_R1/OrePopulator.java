@@ -5,9 +5,30 @@ import java.util.Random;
 import org.bukkit.Material;
 import org.bukkit.generator.ChunkGenerator.ChunkData;
 
-public class OrePopulator {
+/**
+ * OrePopulator is responsible for creating the ores within the stone layer of the AFLR world.
+ */
+final class OrePopulator {
 
-	public static ChunkData populate(int x, int y, int z, ChunkData cd, Random random) {
+	/**
+	 * OrePopulator has a private constructor, because it is a utility class.
+	 */
+	private OrePopulator() {
+		throw new IllegalStateException("Utility class");
+	}
+
+	/**
+	 * Creates the ores within the stone layer of the AFLR world.
+	 *
+	 * @param x the x position within the chunk
+	 * @param y the y position within the chunk
+	 * @param z the z position within the chunk
+	 * @param cd the current ChunkData of the chunk
+	 * @param random the randomizer of the world
+	 *
+	 * @return the new ChunkData of the chunk
+	 */
+	static ChunkData populate(int x, int y, int z, ChunkData cd, Random random) {
 		for (int i = 0; i < 20*10; i++) {
 			setRandomBlock(x, y, z, cd, random, 128, Material.COAL_ORE);
 		}
@@ -39,7 +60,18 @@ public class OrePopulator {
 		return cd;
 	}
 
-	static void setRandomBlock(int x, int y, int z, ChunkData cd, Random random, int maxHeight, Material material) {
+	/**
+	 * Creates the ores at a random height taking into account the maxHeight.
+	 *
+	 * @param x the x position within the chunk
+	 * @param y the y position within the chunk
+	 * @param z the z position within the chunk
+	 * @param cd the current ChunkData of the chunk
+	 * @param random the randomizer of the WorldGenerator
+	 * @param maxHeight the maximum y of the block
+	 * @param material the material of the block to be placed
+	 */
+	private static void setRandomBlock(int x, int y, int z, ChunkData cd, Random random, int maxHeight, Material material) {
 		int rndX = random.nextInt(16);
 		int rndZ = random.nextInt(16);
 		int rndY = random.nextInt(maxHeight - 4) + 4;

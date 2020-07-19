@@ -8,20 +8,26 @@ import org.bukkit.generator.BlockPopulator;
 
 import java.util.Random;
 
-public class TreePopulator extends BlockPopulator {
-	
+/**
+ * TreePopulator is responsible for creating the trees of the AFLR world.
+ */
+class TreePopulator extends BlockPopulator {
+
+	/**
+	 * Populates the trees within the given chunk.
+	 */
 	@Override
-	public void populate(World world, Random rnd, Chunk chunk) {
-		int chance = rnd.nextInt(100) + 1;
+	public void populate(World world, Random random, Chunk chunk) {
+		int chance = random.nextInt(100) + 1;
 		
 		if (chance <= Options.worldTreeChance) {
 	    
-			int realX = rnd.nextInt(16) + chunk.getX() * 16;
-			int realZ = rnd.nextInt(16) + chunk.getZ() * 16;
+			int realX = random.nextInt(16) + chunk.getX() * 16;
+			int realZ = random.nextInt(16) + chunk.getZ() * 16;
 
 			Block block = world.getHighestBlockAt(realX, realZ);
 
-			int randomTree = rnd.nextInt(Options.worldTreeTypes.size());
+			int randomTree = random.nextInt(Options.worldTreeTypes.size());
 			world.generateTree(block.getLocation(), Options.worldTreeTypes.get(randomTree));
 		}
 	}

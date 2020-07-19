@@ -7,14 +7,20 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import de.fof1092.almostflatlandsreloaded.pluginmanager.Spigot.UpdateListener;
 
-public class EventListener implements Listener {
-	
+/**
+ * EventListener is managing the events of the plugin.
+ */
+class EventListener implements Listener {
+
+	/**
+	 * Informs the players about a plugin update.
+	 */
 	@EventHandler
-	public void onJoin(PlayerJoinEvent e) {
+	public void onPlayerJoin(PlayerJoinEvent e) {
 		final Player p = e.getPlayer();
 		
 		if (UpdateListener.isAnewUpdateAvailable()) {
-			if (p.hasPermission("MysteriousHalloween.UpdateMessage")) {
+			if (p.hasPermission("AlmostFlatLandsReloaded.UpdateMessage")) {
 				p.sendMessage(Options.msg.get("[AlmostFlatLandsReloaded]") + Options.msg.get("msg.3"));
 			}
 		}
