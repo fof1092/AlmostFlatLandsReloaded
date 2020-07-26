@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * CommandInfo is managing the AFLR info command.
+ * CommandInfo is managing the AFLR Info command.
  */
 public class CommandInfo {
 
@@ -25,7 +25,7 @@ public class CommandInfo {
 	}
 
 	/**
-	 * Provides the logic for the AFLR info command.
+	 * Provides the logic for the AFLR Info command.
 	 *
 	 * @param cs the sender of the command
 	 * @param args the arguments of the command
@@ -98,7 +98,7 @@ public class CommandInfo {
 	}
 
 	/**
-	 * Provides the tab completions for the AFLR info command.
+	 * Provides the tab completions for the AFLR Info command.
 	 *
 	 * @param cs the sender of the command
 	 * @param args the arguments of the command

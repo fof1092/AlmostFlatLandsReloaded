@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * CommandHelp is managing the AFLR help command.
+ * CommandHelp is managing the AFLR Help command.
  */
 public class CommandHelp {
 
@@ -24,7 +24,7 @@ public class CommandHelp {
 	}
 
 	/**
-	 * Provides the logic for the AFLR help command.
+	 * Provides the logic for the AFLR Help command.
 	 *
 	 * @param cs the sender of the command
 	 * @param args the arguments of the command
@@ -56,7 +56,7 @@ public class CommandHelp {
 						if (Integer.parseInt(args[1]) <= 0 || Integer.parseInt(args[1]) > HelpPageListener.getMaxPlayerPages(p)) {
 							String replaceCommand = Options.msg.get("msg.6");
 							replaceCommand = replaceCommand.replace("[COMMAND]", CommandListener.getCommand("/AFLR help (Page)").getColoredCommand());
-							cs.sendMessage(Options.msg.get("[AlmostFlatLandsReloaded]") + replaceCommand);
+							p.sendMessage(Options.msg.get("[AlmostFlatLandsReloaded]") + replaceCommand);
 						} else {
 							HelpPageListener.sendMessage(p, Integer.parseInt(args[1]) - 1);
 						}
@@ -67,7 +67,7 @@ public class CommandHelp {
 	}
 
 	/**
-	 * Provides the tab completions for the AFLR help command.
+	 * Provides the tab completions for the AFLR Help command.
 	 *
 	 * @param cs the sender of the command
 	 * @param args the arguments of the command

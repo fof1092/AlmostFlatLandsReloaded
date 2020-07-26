@@ -12,7 +12,7 @@ import de.fof1092.almostflatlandsreloaded.pluginmanager.CommandListener;
 /**
  * CommnandAlmostFlatLandsReloaded is managing the AFLR commands.
  */
-class CommnandAlmostFlatLandsReloaded implements CommandExecutor {
+public class CommnandAlmostFlatLandsReloaded implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender cs, Command cmd, String label, String[] args) {

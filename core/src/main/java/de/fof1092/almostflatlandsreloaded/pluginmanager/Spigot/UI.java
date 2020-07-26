@@ -1,6 +1,6 @@
 package de.fof1092.almostflatlandsreloaded.pluginmanager.Spigot;
 
-import de.fof1092.almostflatlandsreloaded.Main;
+import de.fof1092.almostflatlandsreloaded.AlmostFlatlandsReloaded;
 import de.fof1092.almostflatlandsreloaded.pluginmanager.ServerLog;
 import org.bukkit.Bukkit;
 
@@ -22,7 +22,7 @@ public class UI {
 	protected static String tag;
 
 	public static void check() {
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncDelayedTask(AlmostFlatlandsReloaded.getPlugin(), new Runnable() {
 			@Override
 			public void run() {
 				try {

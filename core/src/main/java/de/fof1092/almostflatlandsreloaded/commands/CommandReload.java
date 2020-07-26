@@ -1,6 +1,6 @@
 package de.fof1092.almostflatlandsreloaded.commands;
 
-import de.fof1092.almostflatlandsreloaded.Main;
+import de.fof1092.almostflatlandsreloaded.AlmostFlatlandsReloaded;
 import de.fof1092.almostflatlandsreloaded.Options;
 import de.fof1092.almostflatlandsreloaded.pluginmanager.CommandListener;
 import org.bukkit.command.CommandSender;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * CommandReload is managing the AFLR reload commands.
+ * CommandReload is managing the AFLR Reload commands.
  */
 public class CommandReload {
 
@@ -22,7 +22,7 @@ public class CommandReload {
 
 
 	/**
-	 * Provides the logic for the AFLR reload command.
+	 * Provides the logic for the AFLR Reload command.
 	 *
 	 * @param cs the sender of the command
 	 * @param args the arguments of the command
@@ -38,8 +38,8 @@ public class CommandReload {
 			} else {
 				cs.sendMessage(Options.msg.get("[AlmostFlatLandsReloaded]") + Options.msg.get("msg.4"));
 
-				Main.disable();
-				Main.setup();
+				AlmostFlatlandsReloaded.disable();
+				AlmostFlatlandsReloaded.setup();
 
 				cs.sendMessage(Options.msg.get("[AlmostFlatLandsReloaded]") + Options.msg.get("msg.5"));
 			}
@@ -47,7 +47,7 @@ public class CommandReload {
 	}
 
 	/**
-	 * Provides the tab completions for the AFLR reload command.
+	 * Provides the tab completions for the AFLR Reload command.
 	 *
 	 * @param cs the sender of the command
 	 * @param args the arguments of the command

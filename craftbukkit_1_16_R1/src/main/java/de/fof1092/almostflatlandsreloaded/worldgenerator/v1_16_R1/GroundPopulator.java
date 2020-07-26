@@ -42,7 +42,7 @@ final class GroundPopulator {
 			y+=3;
 			
 			while (y < Options.worldWaterHeight) {
-				cd.setBlock(x, y + 1, z, Material.WATER);
+				cd.setBlock(x, y, z, Material.WATER);
 				y++;
 			}
 		} else {

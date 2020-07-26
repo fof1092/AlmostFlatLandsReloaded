@@ -74,7 +74,7 @@ public final class Options {
 	 */
 	public static List<Material> worldGroundMaterials = new ArrayList<>();
 
-    /**
+	/**
 	 * Determines which material is under the water in the AFLR world.
 	 */
 	public static List<Material> worldWaterGroundMaterials = new ArrayList<>();

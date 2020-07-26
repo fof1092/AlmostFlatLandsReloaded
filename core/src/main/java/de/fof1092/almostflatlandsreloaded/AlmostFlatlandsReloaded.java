@@ -11,6 +11,7 @@ import org.bukkit.block.Biome;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.generator.ChunkGenerator;
+import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -19,26 +20,26 @@ import de.fof1092.almostflatlandsreloaded.pluginmanager.CommandListener;
 import de.fof1092.almostflatlandsreloaded.pluginmanager.ServerLog;
 import de.fof1092.almostflatlandsreloaded.pluginmanager.VersionManager;
 import de.fof1092.almostflatlandsreloaded.pluginmanager.VersionManager.BukkitVersion;
-import de.fof1092.almostflatlandsreloaded.pluginmanager.VersionManager.ServerType;
 import de.fof1092.almostflatlandsreloaded.pluginmanager.Spigot.HelpPageListener;
 import de.fof1092.almostflatlandsreloaded.pluginmanager.Spigot.UpdateListener;
+import org.bukkit.plugin.java.JavaPluginLoader;
 
 /**
  * Main is the main class of the plugin.
  */
-public class Main extends JavaPlugin {
+public class AlmostFlatlandsReloaded extends JavaPlugin {
 
 	/**
 	 * Provides the Main class to the getPlugin() method.
 	 */
-	private static Main plugin;
+	private static AlmostFlatlandsReloaded plugin;
 
 	/**
 	 * Provides the Main class to the plugin.
 	 *
 	 * @return the Main class
 	 */
-	public static Main getPlugin() {
+	public static AlmostFlatlandsReloaded getPlugin() {
 		return plugin;
 	}
 
@@ -50,7 +51,7 @@ public class Main extends JavaPlugin {
 		plugin = this;
 
 		ServerLog.setPluginTag("§2[§a§lAlmostFlatLandsReloaded§2]§a");
-		UpdateListener.initializeUpdateListener(1.22, "1.2.2", 55405);
+		UpdateListener.initializeUpdateListener(1.23, "1.2.3", 55405);
 		UpdateListener.checkForUpdate();
 
 		setup();
@@ -86,7 +87,7 @@ public class Main extends JavaPlugin {
 	 * Provides the logic for the setup of the plugin.
 	 */
 	public static void setup() {
-		VersionManager.setVersionManager(Bukkit.getServer().getClass().getPackage().getName().replace(".",  ",").split(",")[3], ServerType.BUKKIT, false);
+		VersionManager.setVersionManager(Bukkit.getServer().getClass().getPackage().getName().replace(".",  ",").split(",")[3], VersionManager.ServerType.BUKKIT, false);
 
 		File fileConfig = new File("plugins/AlmostFlatLandsReloaded/Config.yml");
 		FileConfiguration ymlFileConfig = YamlConfiguration.loadConfiguration(fileConfig);
@@ -161,7 +162,7 @@ public class Main extends JavaPlugin {
 		if (!ymlFileConfig.getBoolean("GameVersion.SetOwn")) {
 			ServerLog.log("ServerType:§2 " + VersionManager.getSetverTypeString() + "§a, Version:§2 " + VersionManager.getBukkitVersion());
 		} else {
-			VersionManager.setVersionManager(ymlFileConfig.getString("GameVersion.Version"), ServerType.BUKKIT, true);
+			VersionManager.setVersionManager(ymlFileConfig.getString("GameVersion.Version"), VersionManager.ServerType.BUKKIT, true);
 			ServerLog.log("ServerType:§2 " + VersionManager.getSetverTypeString() + "§a, Version:§2 " + VersionManager.getBukkitVersion() + "§a | §2(Self configurated)");
 		}
 
@@ -264,7 +265,7 @@ public class Main extends JavaPlugin {
 	public void onDisable() {
 		System.out.println("[AlmostFlatLandsReloaded] a Plugin by F_o_F_1092");
 
-		Main.disable();
+		AlmostFlatlandsReloaded.disable();
 	}
 
 	/**

@@ -1,6 +1,6 @@
 package de.fof1092.almostflatlandsreloaded.pluginmanager.Spigot;
 
-import de.fof1092.almostflatlandsreloaded.Main;
+import de.fof1092.almostflatlandsreloaded.AlmostFlatlandsReloaded;
 import de.fof1092.almostflatlandsreloaded.pluginmanager.ServerLog;
 import org.bukkit.Bukkit;
 
@@ -13,7 +13,7 @@ import java.net.URLConnection;
 public class UpdateListener extends de.fof1092.almostflatlandsreloaded.pluginmanager.UpdateListener {
 
 	public static void checkForUpdate() {
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncDelayedTask(AlmostFlatlandsReloaded.getPlugin(), new Runnable() {
 			@Override
 			public void run() {
 				try { 
