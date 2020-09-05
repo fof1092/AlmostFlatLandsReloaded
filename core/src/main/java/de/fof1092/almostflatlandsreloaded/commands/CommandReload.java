@@ -33,7 +33,7 @@ public class CommandReload {
 			replaceCommand = replaceCommand.replace("[COMMAND]", CommandListener.getCommand("/AFLR reload").getColoredCommand());
 			cs.sendMessage(Options.msg.get("[AlmostFlatLandsReloaded]") + replaceCommand);
 		} else {
-			if (!cs.hasPermission("HelpPagePlus.Reload")) {
+			if (!cs.hasPermission("AlmostFlatLandsReloaded.Reload")) {
 				cs.sendMessage(Options.msg.get("[AlmostFlatLandsReloaded]") + Options.msg.get("msg.2"));
 			} else {
 				cs.sendMessage(Options.msg.get("[AlmostFlatLandsReloaded]") + Options.msg.get("msg.4"));

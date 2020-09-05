@@ -51,7 +51,7 @@ public class AlmostFlatlandsReloaded extends JavaPlugin {
 		plugin = this;
 
 		ServerLog.setPluginTag("§2[§a§lAlmostFlatLandsReloaded§2]§a");
-		UpdateListener.initializeUpdateListener(1.23, "1.2.3", 55405);
+		UpdateListener.initializeUpdateListener(1.24, "1.2.4", 55405);
 		UpdateListener.checkForUpdate();
 
 		setup();
@@ -72,7 +72,8 @@ public class AlmostFlatlandsReloaded extends JavaPlugin {
 				VersionManager.getBukkitVersion() != BukkitVersion.v1_13_R2 &&
 				VersionManager.getBukkitVersion() != BukkitVersion.v1_14_R1 &&
 				VersionManager.getBukkitVersion() != BukkitVersion.v1_15_R1 &&
-				VersionManager.getBukkitVersion() != BukkitVersion.v1_16_R1) {
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_16_R1 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_16_R2) {
 			ServerLog.err("");
 			ServerLog.err("This version of AlmostFlatLandsReloaded only supports MC 1.8.8 - 1.16 Servers.");
 			ServerLog.err("You can find other versions here https://www.spigotmc.org/resources/55405/history");
@@ -96,7 +97,7 @@ public class AlmostFlatlandsReloaded extends JavaPlugin {
 			try {
 				ymlFileConfig.set("Version", UpdateListener.getUpdateDoubleVersion());
 				ymlFileConfig.set("GameVersion.SetOwn", false);
-				ymlFileConfig.set("GameVersion.Version", "v1_16_R1");
+				ymlFileConfig.set("GameVersion.Version", "v1_16_R2");
 				ymlFileConfig.set("ColoredConsoleText", true);
 				ymlFileConfig.set("ShowUpdateMessage", true);
 
