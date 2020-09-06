@@ -11,7 +11,6 @@ import org.bukkit.block.Biome;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.generator.ChunkGenerator;
-import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -51,7 +50,7 @@ public class AlmostFlatlandsReloaded extends JavaPlugin {
 		plugin = this;
 
 		ServerLog.setPluginTag("§2[§a§lAlmostFlatLandsReloaded§2]§a");
-		UpdateListener.initializeUpdateListener(1.24, "1.2.4", 55405);
+		UpdateListener.initializeUpdateListener(1.25, "1.2.5", 55405);
 		UpdateListener.checkForUpdate();
 
 		setup();
@@ -127,7 +126,18 @@ public class AlmostFlatlandsReloaded extends JavaPlugin {
 				ymlFileConfig.set("World.PreGroundMaterials", preGroundMaterials);
 
 				List<String> groundMaterials = new ArrayList<>();
-				groundMaterials.add(Material.GRASS_BLOCK.toString());
+				if (VersionManager.getBukkitVersion() != BukkitVersion.v1_8_R3 ||
+						VersionManager.getBukkitVersion() != BukkitVersion.v1_9_R1 ||
+						VersionManager.getBukkitVersion() != BukkitVersion.v1_9_R2 ||
+						VersionManager.getBukkitVersion() != BukkitVersion.v1_10_R1 ||
+						VersionManager.getBukkitVersion() != BukkitVersion.v1_11_R1 ||
+						VersionManager.getBukkitVersion() != BukkitVersion.v1_12_R1 ||
+						VersionManager.getBukkitVersion() != BukkitVersion.v1_13_R1 ||
+						VersionManager.getBukkitVersion() != BukkitVersion.v1_13_R2) {
+					groundMaterials.add("GRASS");
+				} else {
+					groundMaterials.add(Material.GRASS_BLOCK.toString());
+				}
 				ymlFileConfig.set("World.GroundMaterials", groundMaterials);
 
 				List<String> waterGroundMaterials = new ArrayList<>();
