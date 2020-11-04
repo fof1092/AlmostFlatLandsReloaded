@@ -6,7 +6,7 @@
 
     <groupId>de.fof1092</groupId>
     <artifactId>almostflatlandsreloaded</artifactId>
-    <version>1.2.6</version>
+    <version>1.2.7</version>
     <name>AlmostFlatLandsReloaded</name>
 
     <packaging>pom</packaging>
@@ -25,6 +25,7 @@
         <module>craftbukkit_1_15_R1</module>
         <module>craftbukkit_1_16_R1</module>
         <module>craftbukkit_1_16_R2</module>
+        <module>craftbukkit_1_16_R3</module>
     </modules>
     
     <properties>
