@@ -50,7 +50,7 @@ public class AlmostFlatlandsReloaded extends JavaPlugin {
 		plugin = this;
 
 		ServerLog.setPluginTag("§2[§a§lAlmostFlatLandsReloaded§2]§a");
-		UpdateListener.initializeUpdateListener(1.27, "1.2.7", 55405);
+		UpdateListener.initializeUpdateListener(1.28, "1.2.8", 55405);
 		UpdateListener.checkForUpdate();
 
 		setup();
@@ -73,9 +73,10 @@ public class AlmostFlatlandsReloaded extends JavaPlugin {
 				VersionManager.getBukkitVersion() != BukkitVersion.v1_15_R1 &&
 				VersionManager.getBukkitVersion() != BukkitVersion.v1_16_R1 &&
 				VersionManager.getBukkitVersion() != BukkitVersion.v1_16_R2 &&
-				VersionManager.getBukkitVersion() != BukkitVersion.v1_16_R3) {
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_16_R3 &&
+				VersionManager.getBukkitVersion() != BukkitVersion.v1_17_R1) {
 			ServerLog.err("");
-			ServerLog.err("This version of AlmostFlatLandsReloaded only supports MC 1.8.8 - 1.16 Servers.");
+			ServerLog.err("This version of AlmostFlatLandsReloaded only supports MC 1.8.8 - 1.17 Servers.");
 			ServerLog.err("You can find other versions here https://www.spigotmc.org/resources/55405/history");
 			ServerLog.err("");
 
@@ -226,7 +227,6 @@ public class AlmostFlatlandsReloaded extends JavaPlugin {
 		if(!fileMessages.exists()) {
 
 			try {
-				ymlFileMessage.save(fileMessages);
 				ymlFileMessage.set("Version", UpdateListener.getUpdateDoubleVersion());
 				ymlFileMessage.set("[AlmostFlatLandsReloaded]", "&2[&a&lAFLR&2] ");
 				ymlFileMessage.set("Color.1", "&a");
