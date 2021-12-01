@@ -25,6 +25,11 @@ public final class Options {
 	public static int worldHeight;
 
 	/**
+	 * Determines the depth of the AFLR world.
+	 */
+	public static int worldDepth;
+
+	/**
 	 * Determines which biome the AFLR world consists of.
 	 */
 	public static Biome worldBiome;
