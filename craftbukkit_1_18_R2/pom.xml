@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.fof1092</groupId>
-    <artifactId>almostflatlandsreloaded-craftbukkit_1_15_R1</artifactId>
+    <artifactId>almostflatlandsreloaded-craftbukkit_1_18_R2</artifactId>
     <packaging>jar</packaging>
 
     <parent>
@@ -31,7 +31,7 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>craftbukkit</artifactId>
-            <version>1.15-R0.1-SNAPSHOT</version>
+            <version>1.18.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
