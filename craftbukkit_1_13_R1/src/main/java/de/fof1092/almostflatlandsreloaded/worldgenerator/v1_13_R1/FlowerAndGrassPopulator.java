@@ -27,8 +27,8 @@ class FlowerAndGrassPopulator extends BlockPopulator {
 				int realX = x + chunk.getX() * 16;
 				int realZ = z + chunk.getZ() * 16;
 
-				Block block = world.getHighestBlockAt(realX, realZ);
-				Block blockAbove = world.getBlockAt(new Location(world, block.getX(), (block.getY() + 1), block.getZ()));
+				Block blockAbove = world.getHighestBlockAt(realX, realZ);
+				Block block = world.getBlockAt(new Location(world, blockAbove.getX(), (blockAbove.getY() - 1), blockAbove.getZ()));
 
 				if (block.getType() == Material.DIRT || block.getType() == Material.GRASS_BLOCK) {
 					if (blockAbove.getType() == Material.AIR) {
@@ -37,7 +37,7 @@ class FlowerAndGrassPopulator extends BlockPopulator {
 						int randomBlockFlower = random.nextInt(100) + 1;
 
 						if (randomBlockGrass <= Options.worldGrassChance) {
-							Util.setBlockFast(world, realX, blockAbove.getY(), realZ, 2, (byte) 0);
+							Util.setBlockFast(world, realX, blockAbove.getY(), realZ, 31, (byte) 1);
 						} else if (randomBlockFlower <= Options.worldFlowerChance) {
 
 							int randomFlowerColor = random.nextInt(4) + 1;

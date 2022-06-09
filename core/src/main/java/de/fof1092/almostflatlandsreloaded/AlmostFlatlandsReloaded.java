@@ -10,6 +10,7 @@ import org.bukkit.*;
 import org.bukkit.block.Biome;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.generator.BiomeProvider;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -50,7 +51,7 @@ public class AlmostFlatlandsReloaded extends JavaPlugin {
 		plugin = this;
 
 		ServerLog.setPluginTag("§2[§a§lAlmostFlatLandsReloaded§2]§a");
-		UpdateListener.initializeUpdateListener(1.210, "1.2.10", 55405);
+		UpdateListener.initializeUpdateListener(1.3, "1.3.0", 55405);
 		UpdateListener.checkForUpdate();
 
 		setup();
@@ -60,30 +61,6 @@ public class AlmostFlatlandsReloaded extends JavaPlugin {
 
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(new EventListener(), this);
-
-		if (VersionManager.getBukkitVersion() != BukkitVersion.v1_8_R3 &&
-				VersionManager.getBukkitVersion() != BukkitVersion.v1_9_R1 &&
-				VersionManager.getBukkitVersion() != BukkitVersion.v1_9_R2 &&
-				VersionManager.getBukkitVersion() != BukkitVersion.v1_10_R1 &&
-				VersionManager.getBukkitVersion() != BukkitVersion.v1_11_R1 &&
-				VersionManager.getBukkitVersion() != BukkitVersion.v1_12_R1 &&
-				VersionManager.getBukkitVersion() != BukkitVersion.v1_13_R1 &&
-				VersionManager.getBukkitVersion() != BukkitVersion.v1_13_R2 &&
-				VersionManager.getBukkitVersion() != BukkitVersion.v1_14_R1 &&
-				VersionManager.getBukkitVersion() != BukkitVersion.v1_15_R1 &&
-				VersionManager.getBukkitVersion() != BukkitVersion.v1_16_R1 &&
-				VersionManager.getBukkitVersion() != BukkitVersion.v1_16_R2 &&
-				VersionManager.getBukkitVersion() != BukkitVersion.v1_16_R3 &&
-				VersionManager.getBukkitVersion() != BukkitVersion.v1_17_R1 &&
-				VersionManager.getBukkitVersion() != BukkitVersion.v1_18_R1 &&
-				VersionManager.getBukkitVersion() != BukkitVersion.v1_18_R2) {
-			ServerLog.err("");
-			ServerLog.err("This version of AlmostFlatLandsReloaded only supports MC 1.8.8 - 1.18.2 Servers.");
-			ServerLog.err("You can find other versions here https://www.spigotmc.org/resources/55405/history");
-			ServerLog.err("");
-
-			getPluginLoader().disablePlugin(this);
-		}
 
 	}
 
@@ -100,7 +77,7 @@ public class AlmostFlatlandsReloaded extends JavaPlugin {
 			try {
 				ymlFileConfig.set("Version", UpdateListener.getUpdateDoubleVersion());
 				ymlFileConfig.set("GameVersion.SetOwn", false);
-				ymlFileConfig.set("GameVersion.Version", "v1_18_R2");
+				ymlFileConfig.set("GameVersion.Version", "v1_19_R1");
 				ymlFileConfig.set("ColoredConsoleText", true);
 				ymlFileConfig.set("ShowUpdateMessage", true);
 
@@ -135,9 +112,7 @@ public class AlmostFlatlandsReloaded extends JavaPlugin {
 						VersionManager.getBukkitVersion() == BukkitVersion.v1_9_R2 ||
 						VersionManager.getBukkitVersion() == BukkitVersion.v1_10_R1 ||
 						VersionManager.getBukkitVersion() == BukkitVersion.v1_11_R1 ||
-						VersionManager.getBukkitVersion() == BukkitVersion.v1_12_R1 ||
-						VersionManager.getBukkitVersion() == BukkitVersion.v1_13_R1 ||
-						VersionManager.getBukkitVersion() == BukkitVersion.v1_13_R2) {
+						VersionManager.getBukkitVersion() == BukkitVersion.v1_12_R1) {
 					groundMaterials.add("GRASS");
 				} else {
 					groundMaterials.add(Material.GRASS_BLOCK.toString());
@@ -305,15 +280,49 @@ public class AlmostFlatlandsReloaded extends JavaPlugin {
 		ChunkGenerator chunkGenerator = null;
 
 		try {
-			Class<?> c = Class.forName("de.fof1092.almostflatlandsreloaded.worldgenerator." + VersionManager.getBukkitVersion() + ".WorldGenerator");
+			Class<?> c;
+			if (VersionManager.getBukkitVersion() == BukkitVersion.v1_8_R3 ||
+					VersionManager.getBukkitVersion() == BukkitVersion.v1_9_R1 ||
+					VersionManager.getBukkitVersion() == BukkitVersion.v1_9_R2 ||
+					VersionManager.getBukkitVersion() == BukkitVersion.v1_10_R1 ||
+					VersionManager.getBukkitVersion() == BukkitVersion.v1_11_R1 ||
+					VersionManager.getBukkitVersion() == BukkitVersion.v1_12_R1 ||
+					VersionManager.getBukkitVersion() == BukkitVersion.v1_13_R1 ||
+					VersionManager.getBukkitVersion() == BukkitVersion.v1_13_R2 ||
+					VersionManager.getBukkitVersion() == BukkitVersion.v1_14_R1 ||
+					VersionManager.getBukkitVersion() == BukkitVersion.v1_15_R1 ||
+					VersionManager.getBukkitVersion() == BukkitVersion.v1_16_R1 ||
+					VersionManager.getBukkitVersion() == BukkitVersion.v1_16_R2 ||
+					VersionManager.getBukkitVersion() == BukkitVersion.v1_16_R3 ||
+					VersionManager.getBukkitVersion() == BukkitVersion.v1_17_R1) {
+				c = Class.forName("de.fof1092.almostflatlandsreloaded.worldgenerator." + VersionManager.getBukkitVersion() + ".WorldGenerator");
+			} else {
+				c = Class.forName("de.fof1092.almostflatlandsreloaded.worldgenerator.v1_18_R1_AND_ABOVE.WorldGenerator");
+			}
 			Constructor<?> m = c.getConstructor();
 			Object i = m.newInstance();
 			chunkGenerator = (ChunkGenerator) i;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return chunkGenerator;
 	}
-	
+
+	@Override
+	public BiomeProvider getDefaultBiomeProvider(String worldName, String id) {
+		BiomeProvider biomeProvider = null;
+
+		try {
+			Class<?> c = Class.forName("de.fof1092.almostflatlandsreloaded.worldgenerator.v1_18_R1_AND_ABOVE.WorldBiomeGenerator");
+			Constructor<?> m = c.getConstructor();
+			Object i = m.newInstance();
+			biomeProvider = (BiomeProvider) i;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return biomeProvider;
+	}
+
 }
