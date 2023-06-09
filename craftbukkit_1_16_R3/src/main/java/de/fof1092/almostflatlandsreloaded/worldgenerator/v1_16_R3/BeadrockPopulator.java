@@ -1,5 +1,6 @@
 package de.fof1092.almostflatlandsreloaded.worldgenerator.v1_16_R3;
 
+import de.fof1092.almostflatlandsreloaded.Options;
 import org.bukkit.Material;
 import org.bukkit.generator.ChunkGenerator.ChunkData;
 
@@ -32,18 +33,18 @@ final class BeadrockPopulator {
 		 int randomBlockBedrock2 = random.nextInt(100) + 1;
 		 int randomBlockBedrock3 = random.nextInt(100) + 1;
 
-		 cd.setBlock(x, 0, z, Material.BEDROCK);
+		 cd.setBlock(x, Options.getWorldDepth, z, Material.BEDROCK);
 
 		 if (randomBlockBedrock1 <= 80) {
-			 cd.setBlock(x, 1, z, Material.BEDROCK);
+			 cd.setBlock(x, Options.getWorldDepth + 1, z, Material.BEDROCK);
 		 }
 
 		 if (randomBlockBedrock2 <= 60) {
-			 cd.setBlock(x, 2, z, Material.BEDROCK);
+			 cd.setBlock(x, Options.getWorldDepth + 2, z, Material.BEDROCK);
 		 }
 
 		 if (randomBlockBedrock3 <= 40) {
-			 cd.setBlock(x, 3, z, Material.BEDROCK);
+			 cd.setBlock(x, Options.getWorldDepth + 3, z, Material.BEDROCK);
 		 }
 
 		 return cd;

@@ -36,7 +36,7 @@ public class WorldGenerator extends ChunkGenerator {
 
 				cd = StonePopulator.populate(x, (int) normalHight, z, cd, random);
 
-				if (Options.worldGenerateOres) {
+				if (Options.worldOresChance > 0) {
 					cd = OrePopulator.populate(x, (int) normalHight, z, cd, random);
 				}
 

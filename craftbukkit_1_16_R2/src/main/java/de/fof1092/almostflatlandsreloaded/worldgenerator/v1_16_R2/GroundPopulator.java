@@ -30,18 +30,14 @@ final class GroundPopulator {
 	 * @return the new ChunkData of the chunk
 	 */
 	static ChunkData populate(int x, int y, int z, ChunkData cd, Random random) {
-		if (Options.worldWaterHeight >= y) {
-			for (int newY = y; newY < y + 3; newY++) {
+		if (Options.worldGenerateWater && y < Options.worldHeight) {
+			for (int newY = y; newY < y + 4; newY++) {
 				int randomBlockType = random.nextInt(Options.worldWaterGroundMaterials.size());
 				cd.setBlock(x, newY, z, Options.worldWaterGroundMaterials.get(randomBlockType));
-				
-				if (newY > Options.worldWaterHeight) {
-					break;
-				}
 			}
-			y+=3;
-			
-			while (y < Options.worldWaterHeight) {
+			y+=4;
+
+			while (y <= Options.worldHeight + 2) {
 				cd.setBlock(x, y, z, Material.WATER);
 				y++;
 			}
@@ -51,7 +47,7 @@ final class GroundPopulator {
 				cd.setBlock(x, newY, z, Options.worldPreGroundMaterials.get(randomBlockType));
 			}
 			y+=3;
-			
+
 			int randomBlockType = random.nextInt(Options.worldGroundMaterials.size());
 			cd.setBlock(x, y, z, Options.worldGroundMaterials.get(randomBlockType));
 		}

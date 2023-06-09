@@ -51,7 +51,7 @@ public class AlmostFlatlandsReloaded extends JavaPlugin {
 		plugin = this;
 
 		ServerLog.setPluginTag("§2[§a§lAlmostFlatLandsReloaded§2]§a");
-		UpdateListener.initializeUpdateListener(1.3, "1.3.0", 55405);
+		UpdateListener.initializeUpdateListener(1.31, "1.3.1", 55405);
 		UpdateListener.checkForUpdate();
 
 		setup();
@@ -77,11 +77,30 @@ public class AlmostFlatlandsReloaded extends JavaPlugin {
 			try {
 				ymlFileConfig.set("Version", UpdateListener.getUpdateDoubleVersion());
 				ymlFileConfig.set("GameVersion.SetOwn", false);
-				ymlFileConfig.set("GameVersion.Version", "v1_19_R1");
+				ymlFileConfig.set("GameVersion.Version", "v1_20_R1");
 				ymlFileConfig.set("ColoredConsoleText", true);
 				ymlFileConfig.set("ShowUpdateMessage", true);
 
 				ymlFileConfig.set("World.Height", 32);
+				if (VersionManager.getBukkitVersion() == BukkitVersion.v1_8_R3 ||
+						VersionManager.getBukkitVersion() == BukkitVersion.v1_9_R1 ||
+						VersionManager.getBukkitVersion() == BukkitVersion.v1_9_R2 ||
+						VersionManager.getBukkitVersion() == BukkitVersion.v1_10_R1 ||
+						VersionManager.getBukkitVersion() == BukkitVersion.v1_11_R1 ||
+						VersionManager.getBukkitVersion() == BukkitVersion.v1_12_R1 ||
+						VersionManager.getBukkitVersion() == BukkitVersion.v1_13_R1 ||
+						VersionManager.getBukkitVersion() == BukkitVersion.v1_13_R2 ||
+						VersionManager.getBukkitVersion() == BukkitVersion.v1_14_R1 ||
+						VersionManager.getBukkitVersion() == BukkitVersion.v1_15_R1 ||
+						VersionManager.getBukkitVersion() == BukkitVersion.v1_16_R1 ||
+						VersionManager.getBukkitVersion() == BukkitVersion.v1_16_R2 ||
+						VersionManager.getBukkitVersion() == BukkitVersion.v1_16_R3 ||
+						VersionManager.getBukkitVersion() == BukkitVersion.v1_17_R1) {
+					ymlFileConfig.set("World.Depth", 0);
+				} else {
+					ymlFileConfig.set("World.Depth", -64);
+				}
+
 				ymlFileConfig.set("World.Biome", Biome.PLAINS.toString());
 				ymlFileConfig.set("World.GrassChance", 14);
 				ymlFileConfig.set("World.FlowerChance", 1);
@@ -93,13 +112,13 @@ public class AlmostFlatlandsReloaded extends JavaPlugin {
 				treeTypes.add(TreeType.BIG_TREE.toString());
 				ymlFileConfig.set("World.TreeTypes", treeTypes);
 
-				ymlFileConfig.set("World.WaterHeight", -1);
-				ymlFileConfig.set("World.GenerateOres", true);
+				ymlFileConfig.set("World.GenerateWater", false);
+				ymlFileConfig.set("World.OresChance", 100);
 
 				List<String> undergroundMaterials = new ArrayList<>();
 				undergroundMaterials.add(Material.STONE.toString());
 				undergroundMaterials.add(Material.STONE.toString());
-				undergroundMaterials.add(Material.COBBLESTONE.toString());
+				undergroundMaterials.add(Material.ANDESITE.toString());
 				ymlFileConfig.set("World.UndergroundMaterials", undergroundMaterials);
 
 				List<String> preGroundMaterials = new ArrayList<>();
@@ -137,6 +156,13 @@ public class AlmostFlatlandsReloaded extends JavaPlugin {
 						ymlFileConfig.set("World.Height", ymlFileConfig.getInt("World.Hight"));
 						ymlFileConfig.set("World.Hight", null);
 					}
+					if (version < 1.31) {
+						ymlFileConfig.set("World.OresChance", ymlFileConfig.getBoolean("World.GenerateOres") ? 100 : 0);
+						ymlFileConfig.set("World.GenerateOres", null);
+						ymlFileConfig.set("World.Depth", 0);
+						ymlFileConfig.set("World.GenerateWater", false);
+						ymlFileConfig.set("World.WaterHeight", null);
+					}
 
 					ymlFileConfig.set("Version", UpdateListener.getUpdateDoubleVersion());
 					ymlFileConfig.save(fileConfig);
@@ -158,6 +184,7 @@ public class AlmostFlatlandsReloaded extends JavaPlugin {
 
 
 		Options.worldHeight = ymlFileConfig.getInt("World.Height");
+		Options.getWorldDepth = ymlFileConfig.getInt("World.Depth");
 
 		try {
 			Options.worldBiome = Biome.valueOf(ymlFileConfig.getString("World.Biome"));
@@ -178,8 +205,8 @@ public class AlmostFlatlandsReloaded extends JavaPlugin {
 			}
 		}
 
-		Options.worldWaterHeight = ymlFileConfig.getInt("World.WaterHeight");
-		Options.worldGenerateOres = ymlFileConfig.getBoolean("World.GenerateOres");
+		Options.worldGenerateWater = ymlFileConfig.getBoolean("World.GenerateWater");
+		Options.worldOresChance = ymlFileConfig.getInt("World.OresChance");
 
 		for (String strMaterial : ymlFileConfig.getStringList("World.UndergroundMaterials")) {
 			Options.worldUndergroundMaterials.add(Material.valueOf(strMaterial));

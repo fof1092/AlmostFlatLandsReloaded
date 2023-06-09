@@ -3,6 +3,7 @@ package de.fof1092.almostflatlandsreloaded.worldgenerator.v1_18_R1_AND_ABOVE;
 import de.fof1092.almostflatlandsreloaded.Options;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.generator.BlockPopulator;
@@ -28,9 +29,12 @@ class TreePopulator extends BlockPopulator {
 
 			Block block = world.getHighestBlockAt(realX, realZ);
 			Block blockAbove = world.getBlockAt(new Location(world, block.getX(), (block.getY() + 1), block.getZ()));
+			Material groundMaterial = block.getType();
 
-			int randomTree = random.nextInt(Options.worldTreeTypes.size());
-			world.generateTree(blockAbove.getLocation(), Options.worldTreeTypes.get(randomTree));
+			if (Options.worldGroundMaterials.contains(groundMaterial)) {
+				int randomTree = random.nextInt(Options.worldTreeTypes.size());
+				world.generateTree(blockAbove.getLocation(), Options.worldTreeTypes.get(randomTree));
+			}
 		}
 	}
 	

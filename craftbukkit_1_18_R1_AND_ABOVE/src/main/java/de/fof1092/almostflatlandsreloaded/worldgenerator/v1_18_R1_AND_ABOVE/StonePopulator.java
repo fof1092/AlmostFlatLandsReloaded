@@ -29,7 +29,7 @@ final class StonePopulator {
 	 * @return the new ChunkData of the chunk
 	 */
 	static ChunkData populate(int x, int y, int z, ChunkData cd, Random random) {
-		for (int newY = 1; newY < y; newY++) {
+		for (int newY = Options.getWorldDepth + 1; newY < y; newY++) {
 			
 			int randomBlockType = random.nextInt(Options.worldUndergroundMaterials.size());
 								

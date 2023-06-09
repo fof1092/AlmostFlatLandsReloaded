@@ -1,5 +1,6 @@
 package de.fof1092.almostflatlandsreloaded.worldgenerator.v1_18_R1_AND_ABOVE;
 
+import de.fof1092.almostflatlandsreloaded.Options;
 import org.bukkit.Material;
 import org.bukkit.generator.ChunkGenerator.ChunkData;
 
@@ -72,13 +73,17 @@ final class OrePopulator {
 	 * @param material the material of the block to be placed
 	 */
 	private static void setRandomBlock(int x, int y, int z, ChunkData cd, Random random, int maxHeight, Material material) {
-		int rndX = random.nextInt(16);
-		int rndZ = random.nextInt(16);
-		int rndY = random.nextInt(maxHeight - 4) + 4;
+		int chance = random.nextInt(100) + 1;
+		if (chance <= Options.worldOresChance) {
 
-		if (rndX == x && rndZ == z) {
-			if (rndY <= y) {
-				cd.setBlock(x, rndY, z, material);
+			int rndX = random.nextInt(16);
+			int rndZ = random.nextInt(16);
+			int rndY = random.nextInt((maxHeight - Options.getWorldDepth) - 4) + 4 + Options.getWorldDepth;
+
+			if (rndX == x && rndZ == z) {
+				if (rndY <= y) {
+					cd.setBlock(x, rndY, z, material);
+				}
 			}
 		}
 	}

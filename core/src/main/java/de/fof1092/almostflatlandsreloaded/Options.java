@@ -27,6 +27,11 @@ public final class Options {
 	/**
 	 * Determines the depth of the AFLR world.
 	 */
+	public static int getWorldDepth;
+
+	/**
+	 * Determines the depth of the AFLR world.
+	 */
 	public static int worldDepth;
 
 	/**
@@ -45,7 +50,7 @@ public final class Options {
 	public static int worldFlowerChance;
 
 	/**
-	 * Determines how many trees are generated in the AFLR world
+	 * Determines how many trees are generated in the AFLR world.
 	 */
 	public static int worldTreeChance;
 
@@ -55,14 +60,14 @@ public final class Options {
 	public static List<TreeType> worldTreeTypes = new ArrayList<>();
 
 	/**
-	 * Determines at what altitude the water in the AFLR world begins.
+	 * Determines if water is being generated in the AFLR world.
 	 */
-	public static int worldWaterHeight;
+	public static boolean worldGenerateWater;
 
 	/**
-	 * Determines if ores are generated in the AFLR world.
+	 * Determines how many ores are generated in the AFLR world.
 	 */
-	public static boolean worldGenerateOres;
+	public static int worldOresChance;
 
 	/**
 	 * Determines which material is used in the underground in the AFLR world.
