@@ -23,11 +23,11 @@ public class VersionManager {
 		v1_18_R1, v1_18_R2,
 		v1_19_R1,
 		v1_20_R1,
-		UNKNOWN
-	}
+		v1_21_R1,
+		UNKNOWN	}
 	
 	public enum BungeeVersion {
-		v1_7, v1_8, v1_9, v1_0, v1_10, v1_11, v1_12, v1_13, v1_14, v1_15, v1_16, v1_17, v1_18, v1_19, v1_20, UNKNOWN
+		v1_7, v1_8, v1_9, v1_0, v1_10, v1_11, v1_12, v1_13, v1_14, v1_15, v1_16, v1_17, v1_18, v1_19, v1_20, v1_21, UNKNOWN
 	}
 
 	public enum ServerType {
@@ -49,7 +49,7 @@ public class VersionManager {
 			
 			version = version.replace("git:BungeeCord-Bootstrap:", "");
 			version = version.split("-")[0];
-			
+
 			if (version.startsWith("1.7")) {
 				VersionManager.bungeeVersion = BungeeVersion.v1_7;
 			} else if (version.startsWith("1.8")) {
@@ -80,6 +80,8 @@ public class VersionManager {
 				VersionManager.bungeeVersion = BungeeVersion.v1_19;
 			} else if (version.startsWith("1.20")) {
 				VersionManager.bungeeVersion = BungeeVersion.v1_20;
+			} else if (version.startsWith("1.21")) {
+				VersionManager.bungeeVersion = BungeeVersion.v1_21;
 			} else {
 				VersionManager.bungeeVersion = BungeeVersion.UNKNOWN;
 			}

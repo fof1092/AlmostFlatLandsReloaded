@@ -51,7 +51,7 @@ public class AlmostFlatlandsReloaded extends JavaPlugin {
 		plugin = this;
 
 		ServerLog.setPluginTag("§2[§a§lAlmostFlatLandsReloaded§2]§a");
-		UpdateListener.initializeUpdateListener(1.31, "1.3.1", 55405);
+		UpdateListener.initializeUpdateListener(1.32, "1.3.2", 55405);
 		UpdateListener.checkForUpdate();
 
 		setup();
@@ -68,7 +68,13 @@ public class AlmostFlatlandsReloaded extends JavaPlugin {
 	 * Provides the logic for the setup of the plugin.
 	 */
 	public static void setup() {
-		VersionManager.setVersionManager(Bukkit.getServer().getClass().getPackage().getName().replace(".",  ",").split(",")[3], VersionManager.ServerType.BUKKIT, false);
+		String[] packageArgs = Bukkit.getServer().getClass().getPackage().getName().replace(".",  ",").split(",");
+		if (packageArgs.length >= 4) {
+			VersionManager.setVersionManager(packageArgs[3], VersionManager.ServerType.BUKKIT, false);
+		}else {
+			// problem in 1.20.6
+			VersionManager.setVersionManager("UNKNOWN", VersionManager.ServerType.BUKKIT, false);
+		}
 
 		File fileConfig = new File("plugins/AlmostFlatLandsReloaded/Config.yml");
 		FileConfiguration ymlFileConfig = YamlConfiguration.loadConfiguration(fileConfig);
